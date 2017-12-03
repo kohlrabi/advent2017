@@ -4,24 +4,16 @@ import fileinput
 
 
 def part1(l):
-    i = None
-    p = None
-    s = 0
-    for ll in l:
-        if ll == '\n':
-            if i == p:
-                s += i
-            break
-        c = int(ll)
-        if i is None:
-            i = c
-        if p == c:
-            s += p
-        p = c
+    s = sum((int(p) for p,n in zip(l, l[1:]+l[0]) if p == n))
+
     return s
 
+def part2(l):
+    pass
+
+
 if __name__ == '__main__':
-    l = fileinput.input()[0]
+    l = fileinput.input()[0].strip()
     print("Part 1: {}".format(part1(l)))
 
 
